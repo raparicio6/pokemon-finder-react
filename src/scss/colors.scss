@@ -1,0 +1,38 @@
+/* stylelint-disable plugin/stylelint-no-indistinguishable-colors */
+$black: #000;
+$cerulean: #00ADEE;
+$earls-green: #BED23C;
+$gray: #808080;
+$lighten-darken: rgba(0, 0, 0, 0.5);
+$red: #F00;
+$silver-chalice: #A8A8A8;
+$wild-sand: #F4F4F4;
+$white: #FFF;
+
+.background-white {
+  background-color: $white;
+}
+
+.background-wild-sand {
+  background-color: $wild-sand;
+}
+
+.background-silver-chalice {
+  background-color: $silver-chalice;
+}
+
+.black {
+  color: $black;
+}
+
+.earls-green {
+  color: $earls-green;
+}
+
+.gray {
+  color: $gray;
+}
+
+.white {
+  color: $white;
+}

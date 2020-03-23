@@ -1,22 +1,28 @@
 import React from 'react';
 
-import logo from './assets/logo.svg';
-import styles from './styles.module.scss';
+import Home from './layout';
 
-function Home() {
-  return (
-    <div className={styles.app}>
-      <header className={styles.appHeader}>
-        <img src={logo} className={styles.appLogo} alt="logo" />
-        <p className={styles.text}>
-          Edit <code>src/app/index.js</code> and save to reload.
-        </p>
-        <a className={styles.appLink} href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const pokemons = [
+  {
+    id: 1,
+    name: 'pikachu',
+    weight: 20,
+    height: 10,
+    imageUrl: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/025.png',
+    baseExperience: 100
+  },
+  {
+    id: 2,
+    name: 'ditto',
+    weight: 8,
+    height: 17,
+    imageUrl: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/132.png',
+    baseExperience: 164
+  }
+];
+
+function HomeContainer() {
+  return <Home pokemons={pokemons} />;
 }
 
-export default Home;
+export default HomeContainer;
