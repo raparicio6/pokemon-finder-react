@@ -1,40 +1,19 @@
 import React from 'react';
-import { array } from 'prop-types';
-import cn from 'classnames';
-// import { t } from 'i18next';
 
-import PokemonInfo from '../../components/PokemonInfo';
+import PokemonList from '../../components/PokemonList';
+import SearchBar from '../../components/SearchBar';
 
 import styles from './styles.module.scss';
 
-function Home({ pokemons }) {
-  const arePokemons = pokemons.length > 0;
-
+function Home() {
   return (
-    <div className={cn({ 'background-wild-sand': arePokemons, 'background-white': !arePokemons })}>
-      {arePokemons ? (
-        <div className={`row ${styles.pokemonsContainer}`}>
-          {pokemons.map(({ name, baseExperience, weight, height, imageUrl, id }) => (
-            <PokemonInfo
-              baseExperience={baseExperience}
-              name={name}
-              weight={weight}
-              height={height}
-              imageUrl={imageUrl}
-              className="m-right-7 m-bottom-7"
-              key={id}
-            />
-          ))}
-        </div>
-      ) : (
-        <p className={`${styles.noPokemonsMessage} full-width`}>No hay pokemons para mostrar</p>
-      )}
+    <div className={`column center background-wild-sand all-screen-height ${styles.container}`}>
+      <h1 className={styles.title}>Pokemon finder</h1>
+      <h2 className={styles.field}>El que quiere pokemons, que los busque.</h2>
+      <SearchBar />
+      <PokemonList />
     </div>
   );
 }
-
-Home.propTypes = {
-  pokemons: array.isRequired // eslint-disable-line react/forbid-prop-types
-};
 
 export default Home;

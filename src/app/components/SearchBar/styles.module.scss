@@ -1,0 +1,9 @@
+@import '../../../scss/colors';
+
+.search-bar {
+  border: 1px solid $very-light-grey;
+  font-size: 15px;
+  transition: width 0.2s;
+  width: 265px;
+  padding: 8px;
+}
