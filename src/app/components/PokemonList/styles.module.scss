@@ -4,16 +4,11 @@
 
 .pokemons-container {
   flex-wrap: wrap;
-  // margin: 100px auto 0;
-  margin: 40px 0 30px;
   max-width: $pokemon-list-width;
-  // padding-top: 35px;
   width: 100%;
 }
 
 .no-pokemons-message {
   color: $burnt-sienna;
   font-size: 32px;
-  margin-top: 100px;
-  text-align: center;
 }

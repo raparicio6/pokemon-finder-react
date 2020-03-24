@@ -20,15 +20,23 @@ function SearchBarContainer() {
         let pokemonsNamesToFetch = JSON.parse(localStorage.getItem(ALL_POKEMONS_NAMES_KEY))[
           pokemonsToSearch[0]
         ][pokemonsToSearch[1]];
-        const restOfChars = pokemonsToSearch.substring(DIGITS_TO_START_SEARCH, pokemonsToSearch.length);
-        pokemonsNamesToFetch = pokemonsNamesToFetch.filter(pokemonName => {
-          const restOfPokemonName = pokemonName.substring(
-            DIGITS_TO_START_SEARCH,
-            DIGITS_TO_START_SEARCH + restOfChars.length
-          );
-          return restOfPokemonName === restOfChars;
-        });
-        setPokemonsToFetch(pokemonsNamesToFetch);
+        if (pokemonsNamesToFetch) {
+          const restOfChars = pokemonsToSearch.substring(DIGITS_TO_START_SEARCH, pokemonsToSearch.length);
+          pokemonsNamesToFetch = pokemonsNamesToFetch.filter(pokemonName => {
+            const restOfPokemonName = pokemonName.substring(
+              DIGITS_TO_START_SEARCH,
+              DIGITS_TO_START_SEARCH + restOfChars.length
+            );
+            return restOfPokemonName === restOfChars;
+          });
+          if (pokemonsNamesToFetch.length) {
+            setPokemonsToFetch(pokemonsNamesToFetch);
+          } else {
+            setPokemonsToFetch([]);
+          }
+        }
+      } else if (!pokemonsToSearch.length) {
+        setPokemonsToFetch([]);
       }
     },
     [setPokemonsToFetch]

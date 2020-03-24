@@ -9,8 +9,8 @@ import styles from './styles.module.scss';
 function Home() {
   return (
     <div className={`column center background-wild-sand all-screen-height ${styles.container}`}>
-      <h1 className={styles.title}>Pokemon finder</h1>
-      <h2 className={styles.field}>El que quiere pokemons, que los busque.</h2>
+      <h1 className={`${styles.title} m-bottom-6`}>Pokemon finder</h1>
+      <h2 className={`${styles.field} m-bottom-6`}>El que quiere pokemons, que los busque.</h2>
       <SearchBar />
       <PokemonList />
       <Footer />

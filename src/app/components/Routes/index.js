@@ -6,7 +6,6 @@ import Home from '../../screens/Home';
 
 import Route from './components/Route';
 
-// TODO: redirect
 function AppRoutes() {
   return (
     <Router>

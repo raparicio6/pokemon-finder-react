@@ -7,12 +7,12 @@ import PokemonInfo from '../PokemonInfo';
 import styles from './styles.module.scss';
 
 function PokemonList({ pokemons }) {
-  const arePokemons = pokemons.length > 0;
+  const areTherePokemons = pokemons.length > 0;
 
   return (
     <>
-      {arePokemons ? (
-        <div className={`row ${styles.pokemonsContainer}`}>
+      {areTherePokemons ? (
+        <div className={`row ${styles.pokemonsContainer} m-top-8 m-bottom-6`}>
           {pokemons.map(({ name, baseExperience, weight, height, imageUrl, id }) => (
             <PokemonInfo
               baseExperience={baseExperience}
@@ -26,7 +26,7 @@ function PokemonList({ pokemons }) {
           ))}
         </div>
       ) : (
-        <p className={`${styles.noPokemonsMessage} full-width`}>
+        <p className={`row center ${styles.noPokemonsMessage} m-top-16`}>
           ¡Usá el buscador para buscar tus pokemons favoritos!
         </p>
       )}

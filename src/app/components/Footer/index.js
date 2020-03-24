@@ -1,11 +1,10 @@
 import React from 'react';
-import { string } from 'prop-types';
 
 import styles from './styles.module.scss';
 
-function Footer({ className }) {
+function Footer() {
   return (
-    <div className={`${className} ${styles.container} row middle`}>
+    <div className={`${styles.container} row middle`}>
       <span className={styles.information}>Hecho por Rodrigo Aparicio</span>
       <a className={styles.repoLink} href="https://github.com/raparicio6/pokemon-finder-react">
         Link a mi repo
@@ -13,9 +12,5 @@ function Footer({ className }) {
     </div>
   );
 }
-
-Footer.propTypes = {
-  className: string
-};
 
 export default Footer;
