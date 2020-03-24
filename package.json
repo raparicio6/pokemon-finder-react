@@ -5,7 +5,6 @@
   "dependencies": {
     "apisauce": "^1.1.1",
     "babel-plugin-module-resolver": "^3.2.0",
-    "classnames": "^2.2.6",
     "i18next": "^13.1.5",
     "node-sass": "^4.13.1",
     "react": "^16.13.1",
@@ -16,7 +15,6 @@
     "react-spinkit": "^3.0.0",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
-    "typescript": "^3.8.3",
     "wolox-equalizer": "0.0.3"
   },
   "scripts": {
