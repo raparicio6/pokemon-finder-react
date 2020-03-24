@@ -2,6 +2,7 @@ import React from 'react';
 
 import PokemonList from '../../components/PokemonList';
 import SearchBar from '../../components/SearchBar';
+import Footer from '../../components/Footer';
 
 import styles from './styles.module.scss';
 
@@ -12,6 +13,7 @@ function Home() {
       <h2 className={styles.field}>El que quiere pokemons, que los busque.</h2>
       <SearchBar />
       <PokemonList />
+      <Footer className={styles.footer} />
     </div>
   );
 }

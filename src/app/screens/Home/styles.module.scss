@@ -12,7 +12,13 @@
 }
 
 .field {
-  color: $gray;
+  color: $fun-blue;
   font-size: 14px;
   margin-bottom: 30px;
+}
+
+.footer {
+  bottom: 0;
+  position: absolute;
+  padding-bottom: 40px;
 }
