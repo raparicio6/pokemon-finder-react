@@ -6,9 +6,9 @@ import { DEFAULT_IMAGE_URL } from '../../constants';
 import styles from './styles.module.scss';
 
 function PokemonInfo({ name, baseExperience, weight, height, imageUrl, className }) {
-  function addDefaultSrc(ev) {
-    ev.target.src = DEFAULT_IMAGE_URL;
-  }
+  const addDefaultSrc = event => {
+    event.target.src = DEFAULT_IMAGE_URL;
+  };
 
   return (
     <div className={`column ${styles.container} ${className}`}>

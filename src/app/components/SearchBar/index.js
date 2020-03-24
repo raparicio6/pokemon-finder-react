@@ -1,44 +1,39 @@
-import React from 'react';
+import React, { useCallback } from 'react';
+import { useDispatch } from 'react-redux';
+
+import { ALL_POKEMONS_NAMES_KEY } from '../../constants';
+import { actionCreators as pokemonsActionsCreators } from '../../../redux/pokemons/actions';
 
 import styles from './styles.module.scss';
 
-export default class MyFilteringComponent extends React.Component {
-  state = {
-    initialItems: [],
-    items: []
+// TODO separar en index y layout
+function SearchBar() {
+  const dispatch = useDispatch();
+  const setPokemonsToFetch = useCallback(
+    pokemonsNamesToFetch => dispatch(pokemonsActionsCreators.setPokemonsToFetch(pokemonsNamesToFetch)),
+    [dispatch]
+  );
+
+  const hola = event => {
+    const pokemonsToSearch = event.target.value;
+    if (pokemonsToSearch.length >= 2) {
+      const pokemonsNamesToFetch = JSON.parse(localStorage.getItem(ALL_POKEMONS_NAMES_KEY))[
+        pokemonsToSearch[0]
+      ][pokemonsToSearch[1]];
+      setPokemonsToFetch(pokemonsNamesToFetch);
+    }
   };
 
-  filterList = event => {
-    let items = this.state.initialItems;
-    items = items.filter(item => item.toLowerCase().search(event.target.value.toLowerCase()) !== -1);
-    this.setState({ items });
-  };
-
-  componentWillMount = () => {
-    this.setState({
-      initialItems: this.props.content,
-      items: this.props.content
-    });
-  };
-
-  render() {
-    return (
-      <div className={styles.search}>
-        <input className={styles.searchBar} type="search" placeholder="Ingrese el nombre a buscar" />
-      </div>
-    );
-  }
+  return (
+    <div className={styles.search}>
+      <input
+        onChange={hola}
+        className={styles.searchBar}
+        type="search"
+        placeholder="Ingrese el nombre a buscar"
+      />
+    </div>
+  );
 }
 
-/* // <div>
-    //   <form>
-    //     <input type="text" placeholder="Search" className={styles.searchBar} onChange={this.filterList} />
-    //   </form>
-    //   <div>
-    //     {
-    //       this.state.items.map(function (item) {
-    //         return <div key={item}>{item}</div>
-    //       })
-    //     }
-    //   </div>
-    // </div> */
+export default SearchBar;

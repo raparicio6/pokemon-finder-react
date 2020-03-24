@@ -1,5 +1,6 @@
 module.exports = {
-  extends: ['wolox-react', 'plugin:import/typescript'],
+  extends: ['wolox-react'],
+  plugins: ['react-hooks', 'import'],
   settings: {
     'react': {
       'version': 'detect'
@@ -27,6 +28,8 @@ module.exports = {
     'no-array-constructor': 'off',
     'no-empty-function': 'off',
     'no-unused-vars': 'off',
-    'no-use-before-define': 'off'
+    'no-use-before-define': 'off',
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn"
   }
 };
