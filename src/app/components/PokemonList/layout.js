@@ -1,6 +1,6 @@
 import React from 'react';
 import { array } from 'prop-types';
-// import { t } from 'i18next';
+import { t } from 'i18next';
 
 import PokemonInfo from '../PokemonInfo';
 
@@ -25,9 +25,7 @@ function PokemonList({ pokemons }) {
           ))}
         </div>
       ) : (
-        <p className={`row center ${styles.noPokemonsMessage} m-top-16`}>
-          ¡Usá el buscador para buscar tus pokemons favoritos!
-        </p>
+        <p className={`row center ${styles.noPokemonsMessage} m-top-16`}>{t('PokemonList:searchMessage')}</p>
       )}
     </>
   );

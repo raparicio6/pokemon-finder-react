@@ -9,5 +9,12 @@ export const DEFAULT_IMAGE_URL =
 
 export const DIGITS_TO_START_SEARCH = 2;
 
+export const LANGUAGES = {
+  EN: 'en',
+  ES: 'es'
+};
+
 export const EN = 'EN';
 export const ES = 'ES';
+
+export const LANGUAGE = 'language';
