@@ -19,7 +19,14 @@ function PokemonListContainer() {
   useEffect(() => {
     const fetchAllPokemons = async () => {
       if (!localStorage.getItem(ALL_POKEMONS_NAMES_KEY)) {
-        const allPokemons = await getAllPokemonsNames();
+        let allPokemons = null;
+        try {
+          allPokemons = await getAllPokemonsNames();
+        } catch {
+          // TODO: show error message
+          return;
+        }
+
         localStorage.setItem(ALL_POKEMONS_NAMES_KEY, JSON.stringify(allPokemons));
       }
     };

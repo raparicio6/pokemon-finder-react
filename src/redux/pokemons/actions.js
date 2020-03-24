@@ -23,7 +23,14 @@ export const actionCreators = {
     const pokemonsNamesToSearch = pokemonsNames.filter(
       pokemonName => !(pokemonName in alreadySearchedPokemonsObject)
     );
-    const pokemons = await Promise.all(pokemonsNamesToSearch.map(getPokemon));
+
+    let pokemons = null;
+    try {
+      pokemons = await Promise.all(pokemonsNamesToSearch.map(getPokemon));
+    } catch (error) {
+      // TODO: show error message
+      return;
+    }
 
     const pokemonsNamesNotToSearch = pokemonsNames.filter(
       pokemonName => pokemonName in alreadySearchedPokemonsObject

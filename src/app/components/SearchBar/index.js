@@ -17,9 +17,11 @@ function SearchBarContainer() {
     event => {
       const pokemonsToSearch = event.target.value;
       if (pokemonsToSearch.length >= DIGITS_TO_START_SEARCH) {
-        let pokemonsNamesToFetch = JSON.parse(localStorage.getItem(ALL_POKEMONS_NAMES_KEY))[
-          pokemonsToSearch[0]
-        ][pokemonsToSearch[1]];
+        const allPokemonsNames = JSON.parse(localStorage.getItem(ALL_POKEMONS_NAMES_KEY));
+        if (!allPokemonsNames) {
+          return;
+        }
+        let pokemonsNamesToFetch = allPokemonsNames[pokemonsToSearch[0]][pokemonsToSearch[1]];
         if (pokemonsNamesToFetch) {
           const restOfChars = pokemonsToSearch.substring(DIGITS_TO_START_SEARCH, pokemonsToSearch.length);
           pokemonsNamesToFetch = pokemonsNamesToFetch.filter(pokemonName => {
