@@ -13,7 +13,7 @@ function Home() {
       <h2 className={styles.field}>El que quiere pokemons, que los busque.</h2>
       <SearchBar />
       <PokemonList />
-      <Footer className={styles.footer} />
+      <Footer />
     </div>
   );
 }

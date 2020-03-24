@@ -18,6 +18,110 @@ const pokemons = [
     height: 17,
     imageUrl: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/132.png',
     baseExperience: 164
+  },
+  {
+    id: 2,
+    name: 'ditto',
+    weight: 8,
+    height: 17,
+    imageUrl: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/132.png',
+    baseExperience: 164
+  },
+  {
+    id: 2,
+    name: 'ditto',
+    weight: 8,
+    height: 17,
+    imageUrl: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/132.png',
+    baseExperience: 164
+  },
+  {
+    id: 2,
+    name: 'ditto',
+    weight: 8,
+    height: 17,
+    imageUrl: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/132.png',
+    baseExperience: 164
+  },
+  {
+    id: 2,
+    name: 'ditto',
+    weight: 8,
+    height: 17,
+    imageUrl: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/132.png',
+    baseExperience: 164
+  },
+  {
+    id: 2,
+    name: 'ditto',
+    weight: 8,
+    height: 17,
+    imageUrl: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/132.png',
+    baseExperience: 164
+  },
+  {
+    id: 2,
+    name: 'ditto',
+    weight: 8,
+    height: 17,
+    imageUrl: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/132.png',
+    baseExperience: 164
+  },
+  {
+    id: 2,
+    name: 'ditto',
+    weight: 8,
+    height: 17,
+    imageUrl: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/132.png',
+    baseExperience: 164
+  },
+  {
+    id: 2,
+    name: 'ditto',
+    weight: 8,
+    height: 17,
+    imageUrl: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/132.png',
+    baseExperience: 164
+  },
+  {
+    id: 2,
+    name: 'ditto',
+    weight: 8,
+    height: 17,
+    imageUrl: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/132.png',
+    baseExperience: 164
+  },
+  {
+    id: 2,
+    name: 'ditto',
+    weight: 8,
+    height: 17,
+    imageUrl: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/132.png',
+    baseExperience: 164
+  },
+  {
+    id: 2,
+    name: 'ditto',
+    weight: 8,
+    height: 17,
+    imageUrl: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/132.png',
+    baseExperience: 164
+  },
+  {
+    id: 2,
+    name: 'ditto',
+    weight: 8,
+    height: 17,
+    imageUrl: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/132.png',
+    baseExperience: 164
+  },
+  {
+    id: 2,
+    name: 'ditto',
+    weight: 8,
+    height: 17,
+    imageUrl: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/132.png',
+    baseExperience: 164
   }
 ];
 
