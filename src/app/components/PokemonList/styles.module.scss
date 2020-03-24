@@ -2,6 +2,8 @@
 
 @import '../../../scss/variables';
 
+$breakpoint-tablet: 780px;
+
 .pokemons-container {
   flex-wrap: wrap;
   max-width: $pokemon-list-width;
@@ -11,4 +13,10 @@
 .no-pokemons-message {
   color: $burnt-sienna;
   font-size: 32px;
+}
+
+@media (max-width: $breakpoint-tablet) {
+  .no-pokemons-message {
+    font-size: 20px;
+  }
 }
