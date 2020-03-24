@@ -1,5 +1,6 @@
 import React from 'react';
 import { func } from 'prop-types';
+import { t } from 'i18next';
 
 import styles from './styles.module.scss';
 
@@ -9,7 +10,7 @@ function SearchBar({ handleOnChange }) {
       onChange={handleOnChange}
       className={styles.searchBar}
       type="search"
-      placeholder="Ingrese el nombre a buscar"
+      placeholder={t('SearchBar:inputPlaceHolder')}
     />
   );
 }

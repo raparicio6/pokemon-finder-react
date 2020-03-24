@@ -19,14 +19,15 @@ function PokemonInfoContainer({ name, baseExperience, weight, height, imageUrl, 
 PokemonInfoContainer.propTypes = {
   baseExperience: number.isRequired,
   height: number.isRequired,
-  imageUrl: string.isRequired,
   name: string.isRequired,
   weight: number.isRequired,
-  className: string
+  className: string,
+  imageUrl: string
 };
 
 PokemonInfoContainer.defaultProps = {
-  className: ''
+  className: '',
+  imageUrl: ''
 };
 
 export default PokemonInfoContainer;

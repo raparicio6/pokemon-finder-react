@@ -32,9 +32,13 @@ function PokemonInfo({ name, baseExperience, weight, height, imageUrl }) {
 PokemonInfo.propTypes = {
   baseExperience: number.isRequired,
   height: number.isRequired,
-  imageUrl: string.isRequired,
   name: string.isRequired,
-  weight: number.isRequired
+  weight: number.isRequired,
+  imageUrl: string
+};
+
+PokemonInfo.defaultProps = {
+  imageUrl: ''
 };
 
 export default PokemonInfo;
