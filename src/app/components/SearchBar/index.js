@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { ALL_POKEMONS_NAMES_KEY } from '../../constants';
+import { ALL_POKEMONS_NAMES_KEY, DIGITS_TO_START_SEARCH } from '../../constants';
 import { actionCreators as pokemonsActionsCreators } from '../../../redux/pokemons/actions';
 
 import SearchBar from './layout';
@@ -16,10 +16,18 @@ function SearchBarContainer() {
   const handleOnChange = useCallback(
     event => {
       const pokemonsToSearch = event.target.value;
-      if (pokemonsToSearch.length >= 2) {
-        const pokemonsNamesToFetch = JSON.parse(localStorage.getItem(ALL_POKEMONS_NAMES_KEY))[
+      if (pokemonsToSearch.length >= DIGITS_TO_START_SEARCH) {
+        let pokemonsNamesToFetch = JSON.parse(localStorage.getItem(ALL_POKEMONS_NAMES_KEY))[
           pokemonsToSearch[0]
         ][pokemonsToSearch[1]];
+        const restOfChars = pokemonsToSearch.substring(DIGITS_TO_START_SEARCH, pokemonsToSearch.length);
+        pokemonsNamesToFetch = pokemonsNamesToFetch.filter(pokemonName => {
+          const restOfPokemonName = pokemonName.substring(
+            DIGITS_TO_START_SEARCH,
+            DIGITS_TO_START_SEARCH + restOfChars.length
+          );
+          return restOfPokemonName === restOfChars;
+        });
         setPokemonsToFetch(pokemonsNamesToFetch);
       }
     },
