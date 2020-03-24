@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
-import { getPokemon } from '../../../services/pokemonService';
+import { getAllPokemonsNames, getPokemon } from '../../../services/pokemonService';
+import { ALL_POKEMONS_NAMES_KEY } from '../../constants';
 
 import PokemonList from './layout';
 
@@ -115,11 +116,17 @@ function PokemonListContainer() {
   const [pokemons, setPokemons] = useState([]);
 
   useEffect(() => {
-    const fetchPokemon = async () => {
-      const pokemon = await getPokemon('pikachu');
-      setPokemons([pokemon]);
+    const fetchAllPokemons = async () => {
+      if (!localStorage.getItem(ALL_POKEMONS_NAMES_KEY)) {
+        const allPokemons = await getAllPokemonsNames();
+        localStorage.setItem(ALL_POKEMONS_NAMES_KEY, JSON.stringify(allPokemons));
+      }
+      // console.log('pp', localStorage.getItem(ALL_POKEMONS_NAMES_KEY))
+      const pokes = JSON.parse(localStorage.getItem(ALL_POKEMONS_NAMES_KEY)).b.l;
+      const data = await Promise.all(pokes.map(pokemon => getPokemon(pokemon)));
+      setPokemons(data);
     };
-    fetchPokemon();
+    fetchAllPokemons();
   }, []);
 
   return <PokemonList pokemons={pokemons} />;

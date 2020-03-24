@@ -8,3 +8,12 @@ export const getPokemon = async pokemonName => {
   }
   throw response;
 };
+
+export const getAllPokemonsNames = async () => {
+  const response = await api.get('/pokemons');
+
+  if (response.ok) {
+    return response.data;
+  }
+  throw response;
+};
