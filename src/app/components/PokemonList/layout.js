@@ -20,7 +20,6 @@ function PokemonList({ pokemons }) {
               weight={weight}
               height={height}
               imageUrl={imageUrl}
-              className="m-right-7 m-bottom-7"
               key={id}
             />
           ))}

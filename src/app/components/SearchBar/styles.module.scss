@@ -2,8 +2,9 @@
 
 .search-bar {
   border: 1px solid $very-light-grey;
+  display: flex;
   font-size: 15px;
-  max-width: 265px;
+  max-width: 300px;
   padding: 8px;
   transition: width 0.2s;
   width: 100%;
