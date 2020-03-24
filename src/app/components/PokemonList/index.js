@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+
+import { getPokemon } from '../../../services/pokemonService';
 
 import PokemonList from './layout';
 
-const pokemons = [
+const hola = [
   {
     id: 1,
     name: 'pikachu',
     weight: 20,
     height: 10,
-    imageUrl: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/025.png',
+    imageUrl: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png',
     baseExperience: 100
   },
   {
@@ -20,112 +22,106 @@ const pokemons = [
     baseExperience: 164
   },
   {
-    id: 2,
-    name: 'ditto',
+    id: 3,
+    name: 'charmander',
     weight: 8,
     height: 17,
-    imageUrl: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/132.png',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/en/a/a5/Pok%C3%A9mon_Charmander_art.png',
     baseExperience: 164
   },
   {
-    id: 2,
-    name: 'ditto',
+    id: 4,
+    name: 'bulbasaur',
     weight: 8,
     height: 17,
-    imageUrl: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/132.png',
+    imageUrl: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/001.png',
     baseExperience: 164
   },
   {
-    id: 2,
-    name: 'ditto',
+    id: 5,
+    name: 'ponyta',
     weight: 8,
     height: 17,
-    imageUrl: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/132.png',
+    imageUrl: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/077.png',
     baseExperience: 164
   },
   {
-    id: 2,
-    name: 'ditto',
+    id: 6,
+    name: 'magnemite',
     weight: 8,
     height: 17,
-    imageUrl: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/132.png',
+    imageUrl: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/081.png',
     baseExperience: 164
   },
   {
-    id: 2,
-    name: 'ditto',
+    id: 7,
+    name: 'chikorita',
     weight: 8,
     height: 17,
-    imageUrl: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/132.png',
+    imageUrl: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/152.png',
     baseExperience: 164
   },
   {
-    id: 2,
-    name: 'ditto',
+    id: 8,
+    name: 'charizard',
     weight: 8,
     height: 17,
-    imageUrl: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/132.png',
+    imageUrl: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/006.png',
     baseExperience: 164
   },
   {
-    id: 2,
-    name: 'ditto',
+    id: 9,
+    name: 'metwo',
     weight: 8,
     height: 17,
-    imageUrl: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/132.png',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/en/4/43/Pok%C3%A9mon_Mewtwo_art.png',
     baseExperience: 164
   },
   {
-    id: 2,
-    name: 'ditto',
+    id: 10,
+    name: 'metwo',
     weight: 8,
     height: 17,
-    imageUrl: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/132.png',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/en/4/43/Pok%C3%A9mon_Mewtwo_art.png',
     baseExperience: 164
   },
   {
-    id: 2,
-    name: 'ditto',
+    id: 11,
+    name: 'metwo',
     weight: 8,
     height: 17,
-    imageUrl: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/132.png',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/en/4/43/Pok%C3%A9mon_Mewtwo_art.png',
     baseExperience: 164
   },
   {
-    id: 2,
-    name: 'ditto',
+    id: 12,
+    name: 'metwo',
     weight: 8,
     height: 17,
-    imageUrl: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/132.png',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/en/4/43/Pok%C3%A9mon_Mewtwo_art.png',
     baseExperience: 164
   },
   {
-    id: 2,
-    name: 'ditto',
+    id: 13,
+    name: 'metwo',
     weight: 8,
     height: 17,
-    imageUrl: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/132.png',
-    baseExperience: 164
-  },
-  {
-    id: 2,
-    name: 'ditto',
-    weight: 8,
-    height: 17,
-    imageUrl: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/132.png',
-    baseExperience: 164
-  },
-  {
-    id: 2,
-    name: 'ditto',
-    weight: 8,
-    height: 17,
-    imageUrl: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/132.png',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/en/4/43/Pok%C3%A9mon_Mewtwo_art.png',
     baseExperience: 164
   }
 ];
 
 function PokemonListContainer() {
+  const [pokemons, setPokemons] = useState([]);
+
+  useEffect(() => {
+    const fetchPokemon = async () => {
+      const pokemon = await getPokemon('pikachu');
+      setPokemons([pokemon]);
+    };
+    fetchPokemon();
+  }, []);
+
   return <PokemonList pokemons={pokemons} />;
 }
 
