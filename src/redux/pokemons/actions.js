@@ -15,11 +15,28 @@ export const actionCreators = {
     type: actions.ADD_POKEMONS,
     payload: pokemons
   }),
-  getPokemons: pokemonsNames => async dispatch => {
-    const pokemons = await Promise.all(pokemonsNames.map(pokemonName => getPokemon(pokemonName)));
+  getPokemons: pokemonsNames => async (dispatch, getState) => {
+    const { alreadySearchedPokemons } = getState().pokemons;
+    const alreadySearchedPokemonsNames = alreadySearchedPokemons.map(pokemon => pokemon.name);
+    const pokemonsToSearch = pokemonsNames.filter(
+      pokemonName => !alreadySearchedPokemonsNames.includes(pokemonName)
+    );
+    const pokemonsNotToSearch = pokemonsNames.filter(pokemonName =>
+      alreadySearchedPokemonsNames.includes(pokemonName)
+    );
+    const pokemons = await Promise.all(pokemonsToSearch.map(getPokemon));
+
+    const otherPokemons = [];
+    pokemonsNotToSearch.forEach(pokemonName => {
+      alreadySearchedPokemons.forEach(pokemon => {
+        if (pokemonName === pokemon.name) {
+          otherPokemons.push(pokemon);
+        }
+      });
+    });
     dispatch({
       type: actions.ADD_POKEMONS,
-      payload: pokemons
+      payload: [...pokemons, ...otherPokemons]
     });
   }
 };
