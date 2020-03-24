@@ -1,4 +1,5 @@
 import { getPokemon } from '../../services/pokemonService';
+import { arrayToObject } from '../../utils.js/arrayToObject';
 
 export const actions = {
   SET_POKEMONS_TO_FETCH: '@@POKEMONS/SET_POKEMONS_TO_FETCH',
@@ -17,26 +18,23 @@ export const actionCreators = {
   }),
   getPokemons: pokemonsNames => async (dispatch, getState) => {
     const { alreadySearchedPokemons } = getState().pokemons;
-    const alreadySearchedPokemonsNames = alreadySearchedPokemons.map(pokemon => pokemon.name);
-    const pokemonsToSearch = pokemonsNames.filter(
-      pokemonName => !alreadySearchedPokemonsNames.includes(pokemonName)
-    );
-    const pokemonsNotToSearch = pokemonsNames.filter(pokemonName =>
-      alreadySearchedPokemonsNames.includes(pokemonName)
-    );
-    const pokemons = await Promise.all(pokemonsToSearch.map(getPokemon));
+    const alreadySearchedPokemonsObject = arrayToObject(alreadySearchedPokemons, 'name');
 
-    const otherPokemons = [];
-    pokemonsNotToSearch.forEach(pokemonName => {
-      alreadySearchedPokemons.forEach(pokemon => {
-        if (pokemonName === pokemon.name) {
-          otherPokemons.push(pokemon);
-        }
-      });
-    });
+    const pokemonsNamesToSearch = pokemonsNames.filter(
+      pokemonName => !(pokemonName in alreadySearchedPokemonsObject)
+    );
+    const pokemons = await Promise.all(pokemonsNamesToSearch.map(getPokemon));
+
+    const pokemonsNamesNotToSearch = pokemonsNames.filter(
+      pokemonName => pokemonName in alreadySearchedPokemonsObject
+    );
+    const pokemonsNotToSearch = pokemonsNamesNotToSearch.map(
+      pokemonName => alreadySearchedPokemonsObject[pokemonName]
+    );
+
     dispatch({
       type: actions.ADD_POKEMONS,
-      payload: [...pokemons, ...otherPokemons]
+      payload: [...pokemons, ...pokemonsNotToSearch]
     });
   }
 };

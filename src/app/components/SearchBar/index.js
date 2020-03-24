@@ -34,6 +34,8 @@ function SearchBarContainer() {
           } else {
             setPokemonsToFetch([]);
           }
+        } else {
+          setPokemonsToFetch([]);
         }
       } else if (!pokemonsToSearch.length) {
         setPokemonsToFetch([]);
