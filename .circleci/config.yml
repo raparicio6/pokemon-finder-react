@@ -25,7 +25,8 @@ jobs:
           command: npm run lint-scss
       - run:
           name: audit
-          command: npm audit | (grep -E "(High | Critical)" -B3 -A10 || exit 0 && exit 1;)
+          command: |
+            npm audit | (grep -E "(High | Critical)" -B3 -A10 || exit 0 && exit 1;)
       - run:
           name: test
           command: npm test
