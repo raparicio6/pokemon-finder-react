@@ -1,4 +1,3 @@
-/* eslint-disable valid-jsdoc */
 import React, { useCallback } from 'react';
 
 import { LANGUAGE } from '../../constants';

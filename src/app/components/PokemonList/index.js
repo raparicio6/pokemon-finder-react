@@ -1,4 +1,3 @@
-/* eslint-disable valid-jsdoc */
 import React, { useEffect, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 

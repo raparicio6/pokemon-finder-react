@@ -1,4 +1,3 @@
-/* eslint-disable valid-jsdoc */
 import React from 'react';
 import { t } from 'i18next';
 

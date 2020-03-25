@@ -31,6 +31,7 @@ module.exports = {
     'no-use-before-define': 'off',
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
-    "no-nested-ternary": 'off'
+    "no-nested-ternary": 'off',
+    "valid-jsdoc": 'off'
   }
 };
