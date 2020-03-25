@@ -13,7 +13,9 @@ function PokemonList({ pokemons, pokemonsLoading }) {
   return (
     <>
       {pokemonsLoading ? (
-        <Spinner />
+        <div className={styles.spinner}>
+          <Spinner />
+        </div>
       ) : areTherePokemons ? (
         <div className={`row ${styles.pokemonsContainer} m-top-8 m-bottom-6`}>
           {pokemons.map(({ name, baseExperience, weight, height, imageUrl, id }) => (

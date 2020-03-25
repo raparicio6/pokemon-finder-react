@@ -15,6 +15,10 @@ $breakpoint-tablet: 780px;
   font-size: 32px;
 }
 
+.spinner {
+  padding-top: 35px;
+}
+
 @media (max-width: $breakpoint-tablet) {
   .no-pokemons-message {
     font-size: 20px;
