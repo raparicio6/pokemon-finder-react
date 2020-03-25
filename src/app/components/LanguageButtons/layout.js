@@ -7,7 +7,7 @@ import styles from './styles.module.scss';
 
 function LanguageButtons({ onHandleLanguageChangeClick }) {
   return (
-    <div className="row">
+    <div className={`row ${styles.container}`}>
       <button
         type="button"
         className={styles.esButton}
