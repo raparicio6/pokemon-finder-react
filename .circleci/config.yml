@@ -23,4 +23,7 @@ jobs:
       - run:
           name: scss linter
           command: npm run lint-scss
+      - run:
+          name: test
+          command: npm test
 
