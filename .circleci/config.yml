@@ -26,7 +26,7 @@ jobs:
       - run:
           name: audit
           command: |
-            npm audit | (grep -E "(High | Critical)" -B3 -A10 || exit 0 && exit 1;)
+            npm audit | (grep -E "(High | Critical)" -B3 -A10 || exit 0 && exit 1)
       - run:
           name: test
           command: npm test
