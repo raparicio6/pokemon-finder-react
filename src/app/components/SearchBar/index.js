@@ -24,7 +24,8 @@ function SearchBarContainer() {
         if (!allPokemonsNames) {
           return;
         }
-        let pokemonsNamesToFetch = allPokemonsNames[pokemonsToSearch[0]][pokemonsToSearch[1]];
+        let pokemonsNamesToFetch =
+          allPokemonsNames[pokemonsToSearch[0]] && allPokemonsNames[pokemonsToSearch[0]][pokemonsToSearch[1]];
         if (pokemonsNamesToFetch) {
           const restOfChars = pokemonsToSearch.substring(DIGITS_TO_START_SEARCH, pokemonsToSearch.length);
           pokemonsNamesToFetch = pokemonsNamesToFetch.filter(pokemonName => {
