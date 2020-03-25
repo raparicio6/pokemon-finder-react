@@ -3,7 +3,8 @@ import { actions } from './actions';
 const initialState = {
   pokemonsNamesToFetch: [],
   pokemons: [],
-  alreadySearchedPokemons: []
+  alreadySearchedPokemons: [],
+  pokemonsLoading: false
 };
 
 function reducer(state = initialState, action) {
@@ -14,8 +15,11 @@ function reducer(state = initialState, action) {
       return {
         ...state,
         pokemons: action.payload,
-        alreadySearchedPokemons: [...new Set([...state.alreadySearchedPokemons, ...action.payload])]
+        alreadySearchedPokemons: [...new Set([...state.alreadySearchedPokemons, ...action.payload])],
+        pokemonsLoading: false
       };
+    case actions.SET_POKEMON_LOADER:
+      return { ...state, pokemonsLoading: true };
     default:
       return state;
   }

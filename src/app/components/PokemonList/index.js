@@ -14,6 +14,7 @@ import PokemonList from './layout';
 function PokemonListContainer() {
   const pokemonsNamesToFetch = useSelector(state => state.pokemons.pokemonsNamesToFetch);
   const pokemons = useSelector(state => state.pokemons.pokemons);
+  const pokemonsLoading = useSelector(state => state.pokemons.pokemonsLoading);
   const dispatch = useDispatch();
   const getPokemons = useCallback(
     pokemonsNames => dispatch(pokemonsActionsCreators.getPokemons(pokemonsNames)),
@@ -41,7 +42,7 @@ function PokemonListContainer() {
     getPokemons(pokemonsNamesToFetch);
   }, [getPokemons, pokemonsNamesToFetch]);
 
-  return <PokemonList pokemons={pokemons} />;
+  return <PokemonList pokemons={pokemons} pokemonsLoading={pokemonsLoading} />;
 }
 
 export default PokemonListContainer;

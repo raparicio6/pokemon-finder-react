@@ -1,17 +1,20 @@
 import React from 'react';
-import { array } from 'prop-types';
+import { array, bool } from 'prop-types';
 import { t } from 'i18next';
 
 import PokemonInfo from '../PokemonInfo';
+import Spinner from '../Spinner';
 
 import styles from './styles.module.scss';
 
-function PokemonList({ pokemons }) {
+function PokemonList({ pokemons, pokemonsLoading }) {
   const areTherePokemons = pokemons.length > 0;
 
   return (
     <>
-      {areTherePokemons ? (
+      {pokemonsLoading ? (
+        <Spinner />
+      ) : areTherePokemons ? (
         <div className={`row ${styles.pokemonsContainer} m-top-8 m-bottom-6`}>
           {pokemons.map(({ name, baseExperience, weight, height, imageUrl, id }) => (
             <PokemonInfo
@@ -32,7 +35,8 @@ function PokemonList({ pokemons }) {
 }
 
 PokemonList.propTypes = {
-  pokemons: array.isRequired // eslint-disable-line react/forbid-prop-types
+  pokemons: array.isRequired, // eslint-disable-line react/forbid-prop-types
+  pokemonsLoading: bool.isRequired
 };
 
 export default PokemonList;

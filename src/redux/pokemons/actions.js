@@ -4,7 +4,8 @@ import { arrayToObject } from '../../utils.js/arrayToObject';
 export const actions = {
   SET_POKEMONS_TO_FETCH: '@@POKEMONS/SET_POKEMONS_TO_FETCH',
   GET_POKEMONS: '@@POKEMONS/GET_POKEMONS',
-  ADD_POKEMONS: '@@POKEMONS/ADD_POKEMONS'
+  ADD_POKEMONS: '@@POKEMONS/ADD_POKEMONS',
+  SET_POKEMON_LOADER: '@@POKEMONS/SET_POKEMON_LOADER'
 };
 
 export const actionCreators = {
@@ -23,6 +24,9 @@ export const actionCreators = {
     const pokemonsNamesToSearch = pokemonsNames.filter(
       pokemonName => !(pokemonName in alreadySearchedPokemonsObject)
     );
+    if (pokemonsNamesToSearch.length) {
+      dispatch(actionCreators.setPokemonLoader());
+    }
     const pokemons = await Promise.all(pokemonsNamesToSearch.map(getPokemon));
 
     const pokemonsNamesNotToSearch = pokemonsNames.filter(
@@ -32,9 +36,9 @@ export const actionCreators = {
       pokemonName => alreadySearchedPokemonsObject[pokemonName]
     );
 
-    dispatch({
-      type: actions.ADD_POKEMONS,
-      payload: [...pokemons, ...pokemonsNotToSearch]
-    });
-  }
+    dispatch(actionCreators.addPokemons([...pokemons, ...pokemonsNotToSearch]));
+  },
+  setPokemonLoader: () => ({
+    type: actions.SET_POKEMON_LOADER
+  })
 };
