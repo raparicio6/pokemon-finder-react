@@ -125,7 +125,7 @@ exports[`App matches the snapshot 1`] = `
                           onHandleLanguageChangeClick={[Function]}
                         >
                           <div
-                            className="row"
+                            className="row container"
                           >
                             <button
                               className="esButton"
@@ -171,6 +171,7 @@ exports[`App matches the snapshot 1`] = `
                       <PokemonListContainer>
                         <PokemonList
                           pokemons={Array []}
+                          pokemonsLoading={false}
                         >
                           <p
                             className="row center noPokemonsMessage m-top-16"
