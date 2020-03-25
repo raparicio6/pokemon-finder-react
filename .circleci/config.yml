@@ -24,8 +24,8 @@ jobs:
           name: scss linter
           command: npm run lint-scss
       - run:
-          name: audit critical and high issues
-          command: npm audit | grep -E "(High)" -B3 -A10
+          name: audit high issues
+          command: npm audit | grep -B 1 -A 10 High
       - run:
           name: test
           command: npm test
