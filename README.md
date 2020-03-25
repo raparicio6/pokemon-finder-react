@@ -7,7 +7,7 @@
 Install dependencies by running:  
 `npm i`
 
-Create a *.env.correspondingEnv* (e.g. .env.development) file and add:  
+Create a *.env.correspondingEnv* (e.g. .env.development) file at the root of the project and add:  
 `REACT_APP_USER_BASE_URL=api_back_url`  
 By default you should use *http://localhost:8080*
 
