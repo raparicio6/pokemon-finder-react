@@ -24,5 +24,8 @@ jobs:
           name: scss linter
           command: npm run lint-scss
       - run:
+          name: audit
+          command: npm audit --audit-level=moderate
+      - run:
           name: test
           command: npm test
