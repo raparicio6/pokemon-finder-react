@@ -1,0 +1,182 @@
+[
+  {
+    "description": "Information about the project",
+    "displayName": "Footer",
+    "methods": [],
+    "filename": "/app/components/Footer/index.js"
+  },
+  {
+    "description": "All the pokemon information",
+    "displayName": "PokemonInfoContainer",
+    "methods": [],
+    "props": {
+      "baseExperience": {
+        "type": {
+          "name": "number"
+        },
+        "required": true,
+        "description": ""
+      },
+      "height": {
+        "type": {
+          "name": "number"
+        },
+        "required": true,
+        "description": ""
+      },
+      "name": {
+        "type": {
+          "name": "string"
+        },
+        "required": true,
+        "description": ""
+      },
+      "weight": {
+        "type": {
+          "name": "number"
+        },
+        "required": true,
+        "description": ""
+      },
+      "className": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "''",
+          "computed": false
+        }
+      },
+      "imageUrl": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "''",
+          "computed": false
+        }
+      }
+    },
+    "filename": "/app/components/PokemonInfo/index.js"
+  },
+  {
+    "description": "",
+    "displayName": "PokemonInfo",
+    "methods": [],
+    "props": {
+      "baseExperience": {
+        "type": {
+          "name": "number"
+        },
+        "required": true,
+        "description": ""
+      },
+      "height": {
+        "type": {
+          "name": "number"
+        },
+        "required": true,
+        "description": ""
+      },
+      "name": {
+        "type": {
+          "name": "string"
+        },
+        "required": true,
+        "description": ""
+      },
+      "weight": {
+        "type": {
+          "name": "number"
+        },
+        "required": true,
+        "description": ""
+      },
+      "imageUrl": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "''",
+          "computed": false
+        }
+      }
+    },
+    "filename": "/app/components/PokemonInfo/layout.js"
+  },
+  {
+    "description": "",
+    "displayName": "LanguageButtons",
+    "methods": [],
+    "props": {
+      "onHandleLanguageChangeClick": {
+        "type": {
+          "name": "func"
+        },
+        "required": true,
+        "description": ""
+      }
+    },
+    "filename": "/app/components/LanguageButtons/layout.js"
+  },
+  {
+    "description": "Buttons to change the language of the site",
+    "displayName": "LanguageButtonsContainer",
+    "methods": [],
+    "filename": "/app/components/LanguageButtons/index.js"
+  },
+  {
+    "description": "List of all displayed Pokemons",
+    "displayName": "PokemonListContainer",
+    "methods": [],
+    "filename": "/app/components/PokemonList/index.js"
+  },
+  {
+    "description": "",
+    "displayName": "PokemonList",
+    "methods": [],
+    "props": {
+      "pokemons": {
+        "type": {
+          "name": "array"
+        },
+        "required": true,
+        "description": ""
+      }
+    },
+    "filename": "/app/components/PokemonList/layout.js"
+  },
+  {
+    "description": "Search bar to search for the desired pokemons",
+    "displayName": "SearchBarContainer",
+    "methods": [],
+    "filename": "/app/components/SearchBar/index.js"
+  },
+  {
+    "description": "",
+    "displayName": "SearchBar",
+    "methods": [],
+    "props": {
+      "handleOnChange": {
+        "type": {
+          "name": "func"
+        },
+        "required": true,
+        "description": ""
+      }
+    },
+    "filename": "/app/components/SearchBar/layout.js"
+  },
+  {
+    "description": "",
+    "displayName": "AppRoutes",
+    "methods": [],
+    "filename": "/app/components/Routes/index.js"
+  }
+]

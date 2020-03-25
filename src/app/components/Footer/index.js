@@ -1,8 +1,12 @@
+/* eslint-disable valid-jsdoc */
 import React from 'react';
 import { t } from 'i18next';
 
 import styles from './styles.module.scss';
 
+/**
+ * Information about the project
+ */
 function Footer() {
   return (
     <div className={`${styles.container} row middle`}>

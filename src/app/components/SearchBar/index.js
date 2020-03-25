@@ -1,3 +1,4 @@
+/* eslint-disable valid-jsdoc */
 import React, { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 
@@ -6,6 +7,9 @@ import { actionCreators as pokemonsActionsCreators } from '../../../redux/pokemo
 
 import SearchBar from './layout';
 
+/**
+ * Search bar to search for the desired pokemons
+ */
 function SearchBarContainer() {
   const dispatch = useDispatch();
   const setPokemonsToFetch = useCallback(

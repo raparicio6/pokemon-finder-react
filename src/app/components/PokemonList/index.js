@@ -1,3 +1,4 @@
+/* eslint-disable valid-jsdoc */
 import React, { useEffect, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -7,6 +8,9 @@ import { actionCreators as pokemonsActionsCreators } from '../../../redux/pokemo
 
 import PokemonList from './layout';
 
+/**
+ * List of all displayed Pokemons
+ */
 function PokemonListContainer() {
   const pokemonsNamesToFetch = useSelector(state => state.pokemons.pokemonsNamesToFetch);
   const pokemons = useSelector(state => state.pokemons.pokemons);

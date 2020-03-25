@@ -1,8 +1,12 @@
+/* eslint-disable valid-jsdoc */
 import React from 'react';
 import { string, number } from 'prop-types';
 
 import PokemonInfo from './layout';
 
+/**
+ * All the pokemon information
+ */
 function PokemonInfoContainer({ name, baseExperience, weight, height, imageUrl, className }) {
   return (
     <PokemonInfo
