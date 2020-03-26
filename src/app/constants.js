@@ -3,11 +3,12 @@ export const Routes = {
 };
 
 export const ALL_POKEMONS_NAMES_KEY = 'allPokemonsNames';
+export const ALL_POKEMONS_DEPTH_KEY = 'allPokemonsDepth';
 
 export const DEFAULT_IMAGE_URL =
   'https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Pokebola-pokeball-png-0.png/601px-Pokebola-pokeball-png-0.png';
 
-export const DIGITS_TO_START_SEARCH = 2;
+export const DIGITS_TO_START_SEARCH = 3;
 
 export const LANGUAGES = {
   EN: 'en',

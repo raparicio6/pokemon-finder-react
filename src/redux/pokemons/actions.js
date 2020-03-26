@@ -1,5 +1,5 @@
 import { getPokemon } from '../../services/pokemonService';
-import { arrayToObject } from '../../utils.js/arrayToObject';
+import { arrayToObject } from '../../utils/arrayToObject';
 
 export const actions = {
   SET_POKEMONS_TO_FETCH: '@@POKEMONS/SET_POKEMONS_TO_FETCH',

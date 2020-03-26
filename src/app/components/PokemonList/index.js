@@ -2,8 +2,9 @@ import React, { useEffect, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { getAllPokemonsNames } from '../../../services/pokemonService';
-import { ALL_POKEMONS_NAMES_KEY } from '../../constants';
+import { ALL_POKEMONS_NAMES_KEY, ALL_POKEMONS_DEPTH_KEY } from '../../constants';
 import { actionCreators as pokemonsActionsCreators } from '../../../redux/pokemons/actions';
+import { objectDepth } from '../../../utils/objectDepth';
 
 import PokemonList from './layout';
 
@@ -32,6 +33,8 @@ function PokemonListContainer() {
         }
 
         localStorage.setItem(ALL_POKEMONS_NAMES_KEY, JSON.stringify(allPokemons));
+        const allPokemonsDepth = objectDepth(allPokemons);
+        localStorage.setItem(ALL_POKEMONS_DEPTH_KEY, allPokemonsDepth - 1);
       }
     };
     fetchAllPokemons();
