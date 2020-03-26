@@ -2,8 +2,6 @@ export const Routes = {
   HOME: '/'
 };
 
-export const ALL_POKEMONS_HASH_KEY = 'allPokemonsHash';
-
 export const DEFAULT_POKEMON_IMAGE_URL =
   'https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Pokebola-pokeball-png-0.png/601px-Pokebola-pokeball-png-0.png';
 
@@ -16,5 +14,3 @@ export const LANGUAGES = {
 
 export const EN = 'EN';
 export const ES = 'ES';
-
-export const LANGUAGE = 'language';

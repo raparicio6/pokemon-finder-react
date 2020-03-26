@@ -1,9 +1,9 @@
 import React, { useEffect, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { getAllPokemonsNames } from '../../../services/pokemonService';
-import { ALL_POKEMONS_HASH_KEY } from '../../constants';
+import { getAllPokemonsNames } from '../../../services/PokemonService';
 import { actionCreators as pokemonsActionsCreators } from '../../../redux/pokemons/actions';
+import LocalStorageService from '../../../services/LocalStorageService';
 
 import PokemonList from './layout';
 
@@ -22,7 +22,7 @@ function PokemonListContainer() {
 
   useEffect(() => {
     const fetchAllPokemons = async () => {
-      if (!localStorage.getItem(ALL_POKEMONS_HASH_KEY)) {
+      if (!LocalStorageService.getAllPokemonsHash()) {
         let allPokemons = null;
         try {
           allPokemons = await getAllPokemonsNames();
@@ -31,8 +31,7 @@ function PokemonListContainer() {
           return;
         }
 
-        // TODO: encrypt data before setting it in localStorage
-        localStorage.setItem(ALL_POKEMONS_HASH_KEY, JSON.stringify(allPokemons));
+        LocalStorageService.setAllPokemonsHash(allPokemons);
       }
     };
     fetchAllPokemons();

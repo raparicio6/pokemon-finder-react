@@ -1,9 +1,10 @@
 import React, { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { ALL_POKEMONS_HASH_KEY, DIGITS_TO_START_SEARCH } from '../../constants';
+import { DIGITS_TO_START_SEARCH } from '../../constants';
 import { actionCreators as pokemonsActionsCreators } from '../../../redux/pokemons/actions';
 import { objectDepth } from '../../../utils/objectDepth';
+import LocalStorageService from '../../../services/LocalStorageService';
 
 import SearchBar from './layout';
 
@@ -21,7 +22,7 @@ function SearchBarContainer() {
     event => {
       const pokemonsToSearch = event.target.value;
       if (pokemonsToSearch.length >= DIGITS_TO_START_SEARCH) {
-        const allPokemonsHash = JSON.parse(localStorage.getItem(ALL_POKEMONS_HASH_KEY));
+        const allPokemonsHash = LocalStorageService.getAllPokemonsHash();
         if (!allPokemonsHash) {
           return;
         }

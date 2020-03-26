@@ -1,4 +1,4 @@
-import { getPokemon } from '../../services/pokemonService';
+import { getPokemon } from '../../services/PokemonService';
 import { arrayToObject } from '../../utils/arrayToObject';
 
 export const actions = {

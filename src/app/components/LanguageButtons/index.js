@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 
-import { LANGUAGE } from '../../constants';
+import LocalStorageService from '../../../services/LocalStorageService';
 
 import LanguagesButtons from './layout';
 
@@ -10,7 +10,7 @@ import LanguagesButtons from './layout';
 function LanguageButtonsContainer() {
   const onHandleLanguageChangeClick = useCallback(event => {
     const language = event.target.dataset.lang;
-    localStorage.setItem(LANGUAGE, language);
+    LocalStorageService.setLanguage(language);
     window.location.reload(false);
   }, []);
 

@@ -1,18 +1,14 @@
 import { init } from 'i18next';
 
-import { LANGUAGE } from '../app/constants';
-
-export const LANGUAGES = {
-  ES: 'es',
-  EN: 'en'
-};
+import LocalStorageService from '../services/LocalStorageService';
+import { LANGUAGES } from '../app/constants';
 
 function requireAll(requireContext) {
   return requireContext.keys().map(requireContext);
 }
 
 init({
-  lng: localStorage.getItem(LANGUAGE) || LANGUAGES.ES,
+  lng: LocalStorageService.getLanguage() || LANGUAGES.ES,
   initImmediate: false
 });
 
