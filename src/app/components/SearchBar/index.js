@@ -1,8 +1,9 @@
 import React, { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { ALL_POKEMONS_NAMES_KEY, DIGITS_TO_START_SEARCH, ALL_POKEMONS_DEPTH_KEY } from '../../constants';
+import { ALL_POKEMONS_HASH_KEY, DIGITS_TO_START_SEARCH } from '../../constants';
 import { actionCreators as pokemonsActionsCreators } from '../../../redux/pokemons/actions';
+import { objectDepth } from '../../../utils/objectDepth';
 
 import SearchBar from './layout';
 
@@ -20,31 +21,33 @@ function SearchBarContainer() {
     event => {
       const pokemonsToSearch = event.target.value;
       if (pokemonsToSearch.length >= DIGITS_TO_START_SEARCH) {
-        const allPokemonsNames = JSON.parse(localStorage.getItem(ALL_POKEMONS_NAMES_KEY));
-        if (!allPokemonsNames) {
+        const allPokemonsHash = JSON.parse(localStorage.getItem(ALL_POKEMONS_HASH_KEY));
+        if (!allPokemonsHash) {
           return;
         }
 
-        const allPokemonsDepth = localStorage.getItem(ALL_POKEMONS_DEPTH_KEY);
+        const allPokemonsHashCharsDepth = objectDepth(allPokemonsHash) - 1;
         let key = pokemonsToSearch[0];
-        let pokemonsNamesToFetch = allPokemonsNames[key];
-        for (let i = 1; i < allPokemonsDepth; i++) {
-          if (!pokemonsNamesToFetch) {
+        let completePokemonsNamesToFetch = allPokemonsHash[key];
+        for (let i = 1; i < allPokemonsHashCharsDepth; i++) {
+          if (!completePokemonsNamesToFetch) {
             break;
           }
           key = pokemonsToSearch[i];
-          pokemonsNamesToFetch = pokemonsNamesToFetch[key];
+          completePokemonsNamesToFetch = completePokemonsNamesToFetch[key];
         }
 
-        if (pokemonsNamesToFetch) {
-          const difference = DIGITS_TO_START_SEARCH - (DIGITS_TO_START_SEARCH - allPokemonsDepth);
-          const restOfChars = pokemonsToSearch.substring(difference, pokemonsToSearch.length);
-          pokemonsNamesToFetch = pokemonsNamesToFetch.filter(pokemonName => {
-            const restOfPokemonName = pokemonName.substring(difference, difference + restOfChars.length);
+        if (completePokemonsNamesToFetch) {
+          const restOfChars = pokemonsToSearch.substring(allPokemonsHashCharsDepth, pokemonsToSearch.length);
+          completePokemonsNamesToFetch = completePokemonsNamesToFetch.filter(pokemonName => {
+            const restOfPokemonName = pokemonName.substring(
+              allPokemonsHashCharsDepth,
+              allPokemonsHashCharsDepth + restOfChars.length
+            );
             return restOfPokemonName === restOfChars;
           });
-          if (pokemonsNamesToFetch.length) {
-            setPokemonsToFetch(pokemonsNamesToFetch);
+          if (completePokemonsNamesToFetch.length) {
+            setPokemonsToFetch(completePokemonsNamesToFetch);
           } else {
             setPokemonsToFetch([]);
           }

@@ -2,20 +2,20 @@ import React from 'react';
 import { string, number } from 'prop-types';
 import { t } from 'i18next';
 
-import { DEFAULT_IMAGE_URL } from '../../constants';
+import { DEFAULT_POKEMON_IMAGE_URL } from '../../constants';
 
 import styles from './styles.module.scss';
 
 function PokemonInfo({ name, baseExperience, weight, height, imageUrl }) {
   const addDefaultSrc = event => {
-    event.target.src = DEFAULT_IMAGE_URL;
+    event.target.src = DEFAULT_POKEMON_IMAGE_URL;
   };
 
   return (
     <div className={`column ${styles.container} m-right-7 m-bottom-7`}>
       <img
         onError={addDefaultSrc}
-        src={imageUrl || DEFAULT_IMAGE_URL}
+        src={imageUrl || DEFAULT_POKEMON_IMAGE_URL}
         alt="Pokemon appearance"
         className={styles.pokemonAppearanceImage}
       />
