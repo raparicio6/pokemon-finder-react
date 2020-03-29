@@ -26,6 +26,16 @@ const setValue = (key, value) => {
   }
 };
 
+const removeValue = key => {
+  const encodedKey = window.btoa(key);
+
+  try {
+    window.localStorage.removeItem(encodedKey);
+  } catch (e) {
+    tempStorage[encodedKey] = undefined;
+  }
+};
+
 const defineProperty = (prop, defaultKey = '', tag = '') => {
   const projectName = 'pokemon-finder-react'.replace(/-/g, '_').toUpperCase();
   const capitalizedKey = `${prop[0].toUpperCase()}${prop.substring(1)}`;
