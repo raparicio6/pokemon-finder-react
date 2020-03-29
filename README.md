@@ -67,3 +67,6 @@ This project was written and is maintained by [Rodrigo Aparicio](https://github.
 ## License
 
 This project is licensed under the MIT License.
+
+&nbsp;
+<img alt="Badges" src="https://i.ya-webdesign.com/images/pokemon-badge-png-1.png" height="200" width="500">
