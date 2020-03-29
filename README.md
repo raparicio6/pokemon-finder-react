@@ -3,7 +3,7 @@
 [![Build Status](https://circleci.com/gh/raparicio6/pokemon-finder-react.svg?style=shield)](https://circleci.com/gh/raparicio6/pokemon-finder-react)
 
 &nbsp;
-Be a pokemon master!  
+**Be a pokemon master!**
 
 <img alt="Pokeball" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Pokebola-pokeball-png-0.png/601px-Pokebola-pokeball-png-0.png" height="200" width="200">
 
@@ -15,8 +15,7 @@ Be a pokemon master!
 Get the latest version of node from the [official website](https://nodejs.org/) or using [nvm](https://github.com/creationix/nvm).  
 Nvm approach is preferred.
 
-Install dependencies by running:  
-`npm i`
+Install dependencies by running `npm i`.
 
 Create a *.env.correspondingEnv* (e.g. .env.development) file at the root of the project and add:  
 ```
@@ -30,12 +29,12 @@ To start the server by default (development) run:
 To start a specific environment, run:  
 `npm run start-env environment`
 
-### Only building
+#### Only building
 
 To only build the application in a specific env, run:
 `npm run build environment`
 
-## Running the tests
+### Running the tests
 
 In order to execute the tests run `npm test`.
 
@@ -61,4 +60,4 @@ This project was written and is maintained by [Rodrigo Aparicio](https://github.
 
 ## License
 
-This project is licensed under the MIT License
+This project is licensed under the MIT License.
