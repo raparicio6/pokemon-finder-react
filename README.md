@@ -31,8 +31,8 @@ To start a specific environment, run:
 
 #### Only building
 
-To only build the application in a specific env, run:
-`npm run build environment`.
+To only build the application in a specific env, run:  
+`npm run build environment`
 
 ### Running the tests
 
