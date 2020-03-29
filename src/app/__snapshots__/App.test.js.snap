@@ -48,6 +48,7 @@ exports[`App matches the snapshot 1`] = `
                   "url": "/",
                 }
               }
+              exact={true}
               location={
                 Object {
                   "hash": "",
@@ -67,6 +68,7 @@ exports[`App matches the snapshot 1`] = `
                     "url": "/",
                   }
                 }
+                exact={true}
                 location={
                   Object {
                     "hash": "",
