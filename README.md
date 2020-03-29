@@ -34,7 +34,7 @@ To start a specific environment, run:
 To only build the application in a specific env, run:  
 `npm run build environment`
 
-### Running the tests
+### Testing
 
 In order to execute the tests run `npm test`.  
 [Jest](https://jestjs.io/) was used as the testing framework along with [Enzyme](https://airbnb.io/enzyme/).
