@@ -1,3 +1,5 @@
+import immutable from 'seamless-immutable';
+
 import { actions } from './actions';
 
 const initialState = {
@@ -7,7 +9,7 @@ const initialState = {
   pokemonsLoading: false
 };
 
-function reducer(state = initialState, action) {
+function reducer(state = immutable(initialState), action) {
   switch (action.type) {
     case actions.SET_POKEMONS_TO_FETCH:
       return { ...state, pokemonsNamesToFetch: action.payload };
