@@ -1,16 +1,17 @@
 import api from '../config/api';
 
-export const getPokemon = async pokemonName => {
-  const response = await api.get(`/pokemons/${pokemonName}`);
+export const getPokemons = async pokemonsNames => {
+  const formattedPokemonsNames = pokemonsNames.map(pokemonName => `pokemonsNames[]=${pokemonName}&`).join('');
+  const response = await api.get(`/pokemons?${formattedPokemonsNames}`);
 
   if (response.ok) {
-    return response.data.pokemon;
+    return response.data.pokemons;
   }
   throw response;
 };
 
 export const getAllPokemonsNames = async () => {
-  const response = await api.get('/pokemons');
+  const response = await api.get('/pokemons_names');
 
   if (response.ok) {
     return response.data;

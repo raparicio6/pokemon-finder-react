@@ -1,4 +1,4 @@
-import { getPokemon } from '../../services/PokemonService';
+import { getPokemons } from '../../services/PokemonService';
 import { arrayToObject } from '../../utils/arrayToObject';
 
 export const actions = {
@@ -24,10 +24,12 @@ export const actionCreators = {
     const pokemonsNamesToSearch = pokemonsNames.filter(
       pokemonName => !(pokemonName in alreadySearchedPokemonsObject)
     );
+
+    let pokemons = [];
     if (pokemonsNamesToSearch.length) {
       dispatch(actionCreators.setPokemonLoader());
+      pokemons = await getPokemons(pokemonsNamesToSearch);
     }
-    const pokemons = await Promise.all(pokemonsNamesToSearch.map(getPokemon));
 
     const pokemonsNamesNotToSearch = pokemonsNames.filter(
       pokemonName => pokemonName in alreadySearchedPokemonsObject
