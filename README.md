@@ -23,7 +23,7 @@ REACT_APP_USER_BASE_URL=api_back_url
 ```  
 By default [backend](https://github.com/raparicio6/pokemon-finder-node) uses *http://localhost:8080* as the base url.
 
-To start the server by default (development) run:  
+To start the app by default (development) run:  
 `npm start`
 
 To start a specific environment, run:  
