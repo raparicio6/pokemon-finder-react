@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Redirect } from 'react-router-dom';
 
 import { Routes } from '../../constants';
 import Home from '../../screens/Home';
@@ -10,7 +10,8 @@ function AppRoutes() {
   return (
     <Router>
       <Switch>
-        <Route path={Routes.HOME} component={Home} />
+        <Route exact path={Routes.HOME} component={Home} />
+        <Redirect to={Routes.HOME} />
       </Switch>
     </Router>
   );
