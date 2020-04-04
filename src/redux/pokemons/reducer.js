@@ -3,25 +3,27 @@ import immutable from 'seamless-immutable';
 import { actions } from './actions';
 
 const initialState = {
-  pokemonsNamesToFetch: [],
+  pokemonsNamesToBeSearched: [],
   pokemons: [],
   alreadySearchedPokemons: [],
-  pokemonsLoading: false
+  pokemonsLoading: false,
+  pokemonsError: false
 };
 
 function reducer(state = immutable(initialState), action) {
   switch (action.type) {
-    case actions.SET_POKEMONS_TO_FETCH:
-      return { ...state, pokemonsNamesToFetch: action.payload };
-    case actions.ADD_POKEMONS:
+    case actions.SET_POKEMONS_TO_BE_SEARCHED:
+      return { ...state, pokemonsNamesToBeSearched: action.payload };
+    case actions.GET_POKEMONS_LOADER:
+      return { ...state, pokemonsLoading: action.payload };
+    case actions.GET_POKEMONS_SUCCESS:
       return {
         ...state,
         pokemons: action.payload,
         alreadySearchedPokemons: [...new Set([...state.alreadySearchedPokemons, ...action.payload])],
         pokemonsLoading: false
       };
-    case actions.SET_POKEMON_LOADER:
-      return { ...state, pokemonsLoading: true };
+
     default:
       return state;
   }

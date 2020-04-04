@@ -2,45 +2,52 @@ import { getPokemons } from '../../services/PokemonService';
 import { arrayToObject } from '../../utils/arrayToObject';
 
 export const actions = {
-  SET_POKEMONS_TO_FETCH: '@@POKEMONS/SET_POKEMONS_TO_FETCH',
+  SET_POKEMONS_TO_BE_SEARCHED: '@@POKEMONS/SET_POKEMONS_TO_BE_SEARCHED',
   GET_POKEMONS: '@@POKEMONS/GET_POKEMONS',
-  ADD_POKEMONS: '@@POKEMONS/ADD_POKEMONS',
-  SET_POKEMON_LOADER: '@@POKEMONS/SET_POKEMON_LOADER'
+  GET_POKEMONS_SUCCESS: '@@POKEMONS/GET_POKEMONS_SUCCESS',
+  GET_POKEMONS_LOADER: '@@POKEMONS/GET_POKEMONS_LOADER'
 };
 
 export const actionCreators = {
-  setPokemonsToFetch: pokemonsNames => ({
-    type: actions.SET_POKEMONS_TO_FETCH,
+  setPokemonsToBeSearched: pokemonsNames => ({
+    type: actions.SET_POKEMONS_TO_BE_SEARCHED,
     payload: pokemonsNames
-  }),
-  addPokemons: pokemons => ({
-    type: actions.ADD_POKEMONS,
-    payload: pokemons
   }),
   getPokemons: pokemonsNames => async (dispatch, getState) => {
     const { alreadySearchedPokemons } = getState().pokemons;
     const alreadySearchedPokemonsObject = arrayToObject(alreadySearchedPokemons, 'name');
 
-    const pokemonsNamesToSearch = pokemonsNames.filter(
+    const pokemonsNamesToBeSearched = pokemonsNames.filter(
       pokemonName => !(pokemonName in alreadySearchedPokemonsObject)
     );
 
-    let pokemons = [];
-    if (pokemonsNamesToSearch.length) {
-      dispatch(actionCreators.setPokemonLoader());
-      pokemons = await getPokemons(pokemonsNamesToSearch);
+    if (pokemonsNamesToBeSearched.length) {
+      dispatch(actionCreators.getPokemonsLoader(true));
     }
 
-    const pokemonsNamesNotToSearch = pokemonsNames.filter(
+    let pokemonsSearched = [];
+    try {
+      pokemonsSearched = await getPokemons(pokemonsNamesToBeSearched);
+      return dispatch(
+        actionCreators.getPokemonsSuccess(pokemonsSearched, pokemonsNames, alreadySearchedPokemonsObject)
+      );
+    } catch {
+      // TODO: show error message
+      return 'todo';
+    }
+  },
+  getPokemonsLoader: isLoading => ({
+    type: actions.GET_POKEMONS_LOADER,
+    payload: isLoading
+  }),
+  getPokemonsSuccess: (pokemonsSearched, pokemonsNames, alreadySearchedPokemonsObject) => {
+    const pokemonsNamesNotToBeSearched = pokemonsNames.filter(
       pokemonName => pokemonName in alreadySearchedPokemonsObject
     );
-    const pokemonsNotToSearch = pokemonsNamesNotToSearch.map(
+    const pokemonsNotToBeSearched = pokemonsNamesNotToBeSearched.map(
       pokemonName => alreadySearchedPokemonsObject[pokemonName]
     );
 
-    dispatch(actionCreators.addPokemons([...pokemons, ...pokemonsNotToSearch]));
-  },
-  setPokemonLoader: () => ({
-    type: actions.SET_POKEMON_LOADER
-  })
+    return { type: actions.GET_POKEMONS_SUCCESS, payload: [...pokemonsSearched, ...pokemonsNotToBeSearched] };
+  }
 };

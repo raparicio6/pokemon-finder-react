@@ -11,7 +11,7 @@ import PokemonList from './layout';
  * List of all displayed Pokemons
  */
 function PokemonListContainer() {
-  const pokemonsNamesToFetch = useSelector(state => state.pokemons.pokemonsNamesToFetch);
+  const pokemonsNamesToBeSearched = useSelector(state => state.pokemons.pokemonsNamesToBeSearched);
   const pokemons = useSelector(state => state.pokemons.pokemons);
   const pokemonsLoading = useSelector(state => state.pokemons.pokemonsLoading);
   const dispatch = useDispatch();
@@ -21,7 +21,7 @@ function PokemonListContainer() {
   );
 
   useEffect(() => {
-    const fetchAllPokemons = async () => {
+    const setAllPokemonsNamesInStorage = async () => {
       if (!LocalStorageService.getAllPokemonsHash()) {
         let allPokemons = null;
         try {
@@ -34,12 +34,12 @@ function PokemonListContainer() {
         LocalStorageService.setAllPokemonsHash(allPokemons);
       }
     };
-    fetchAllPokemons();
+    setAllPokemonsNamesInStorage();
   }, []);
 
   useEffect(() => {
-    getPokemons(pokemonsNamesToFetch);
-  }, [getPokemons, pokemonsNamesToFetch]);
+    getPokemons(pokemonsNamesToBeSearched);
+  }, [getPokemons, pokemonsNamesToBeSearched]);
 
   return <PokemonList pokemons={pokemons} pokemonsLoading={pokemonsLoading} />;
 }

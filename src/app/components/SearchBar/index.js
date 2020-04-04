@@ -13,8 +13,8 @@ import SearchBar from './layout';
  */
 function SearchBarContainer() {
   const dispatch = useDispatch();
-  const setPokemonsToFetch = useCallback(
-    pokemonsNamesToFetch => dispatch(pokemonsActionsCreators.setPokemonsToFetch(pokemonsNamesToFetch)),
+  const setPokemonsToBeSearched = useCallback(
+    pokemonsToBeSearched => dispatch(pokemonsActionsCreators.setPokemonsToBeSearched(pokemonsToBeSearched)),
     [dispatch]
   );
 
@@ -29,37 +29,37 @@ function SearchBarContainer() {
 
         const allPokemonsHashCharsDepth = objectDepth(allPokemonsHash) - 1;
         let key = pokemonsToSearch[0];
-        let completePokemonsNamesToFetch = allPokemonsHash[key];
+        let pokemonsNamesToBeSearched = allPokemonsHash[key];
         for (let i = 1; i < allPokemonsHashCharsDepth; i++) {
-          if (!completePokemonsNamesToFetch) {
+          if (!pokemonsNamesToBeSearched) {
             break;
           }
           key = pokemonsToSearch[i];
-          completePokemonsNamesToFetch = completePokemonsNamesToFetch[key];
+          pokemonsNamesToBeSearched = pokemonsNamesToBeSearched[key];
         }
 
-        if (completePokemonsNamesToFetch) {
+        if (pokemonsNamesToBeSearched) {
           const restOfChars = pokemonsToSearch.substring(allPokemonsHashCharsDepth, pokemonsToSearch.length);
-          completePokemonsNamesToFetch = completePokemonsNamesToFetch.filter(pokemonName => {
+          pokemonsNamesToBeSearched = pokemonsNamesToBeSearched.filter(pokemonName => {
             const restOfPokemonName = pokemonName.substring(
               allPokemonsHashCharsDepth,
               allPokemonsHashCharsDepth + restOfChars.length
             );
             return restOfPokemonName === restOfChars;
           });
-          if (completePokemonsNamesToFetch.length) {
-            setPokemonsToFetch(completePokemonsNamesToFetch);
+          if (pokemonsNamesToBeSearched.length) {
+            setPokemonsToBeSearched(pokemonsNamesToBeSearched);
           } else {
-            setPokemonsToFetch([]);
+            setPokemonsToBeSearched([]);
           }
         } else {
-          setPokemonsToFetch([]);
+          setPokemonsToBeSearched([]);
         }
       } else if (!pokemonsToSearch.length) {
-        setPokemonsToFetch([]);
+        setPokemonsToBeSearched([]);
       }
     },
-    [setPokemonsToFetch]
+    [setPokemonsToBeSearched]
   );
 
   return <SearchBar handleOnChange={handleOnChange} />;

@@ -1,6 +1,10 @@
 import api from '../config/api';
 
 export const getPokemons = async pokemonsNames => {
+  if (!pokemonsNames.length) {
+    return [];
+  }
+
   const formattedPokemonsNames = pokemonsNames.map(pokemonName => `pokemonsNames[]=${pokemonName}&`).join('');
   const response = await api.get(`/pokemons?${formattedPokemonsNames}`);
 
