@@ -2,8 +2,6 @@
 
 @import '../../../scss/variables';
 
-$breakpoint-tablet: 780px;
-
 .pokemons-container {
   flex-wrap: wrap;
   max-width: $pokemon-list-width;
