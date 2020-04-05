@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { DIGITS_TO_START_SEARCH } from '../../constants';
+import { DIGITS_TO_START_SEARCH, DEFAULT_ERROR_MESSAGE, LANGUAGES } from '../../constants';
 import { actionCreators as pokemonsActionsCreators } from '../../../redux/pokemons/actions';
 import { objectDepth } from '../../../utils/objectDepth';
 import LocalStorageService from '../../../services/LocalStorageService';
@@ -17,6 +17,10 @@ function SearchBarContainer() {
     pokemonsToBeSearched => dispatch(pokemonsActionsCreators.setPokemonsToBeSearched(pokemonsToBeSearched)),
     [dispatch]
   );
+  const getPokemonsFailure = useCallback(
+    errorMessage => dispatch(pokemonsActionsCreators.getPokemonsFailure(errorMessage)),
+    [dispatch]
+  );
 
   const handleOnChange = useCallback(
     event => {
@@ -24,42 +28,43 @@ function SearchBarContainer() {
       if (pokemonsToSearch.length >= DIGITS_TO_START_SEARCH) {
         const allPokemonsHash = LocalStorageService.getAllPokemonsHash();
         if (!allPokemonsHash) {
+          const language = LocalStorageService.getLanguage() || LANGUAGES.ES;
+          const errorMessage = DEFAULT_ERROR_MESSAGE[language];
+          getPokemonsFailure(errorMessage);
           return;
         }
 
         const allPokemonsHashCharsDepth = objectDepth(allPokemonsHash) - 1;
         let key = pokemonsToSearch[0];
-        let pokemonsNamesToBeSearched = allPokemonsHash[key];
+        let namesOfPokemonsToBeSearched = allPokemonsHash[key];
         for (let i = 1; i < allPokemonsHashCharsDepth; i++) {
-          if (!pokemonsNamesToBeSearched) {
+          if (!namesOfPokemonsToBeSearched) {
             break;
           }
           key = pokemonsToSearch[i];
-          pokemonsNamesToBeSearched = pokemonsNamesToBeSearched[key];
+          namesOfPokemonsToBeSearched = namesOfPokemonsToBeSearched[key];
         }
 
-        if (pokemonsNamesToBeSearched) {
+        if (namesOfPokemonsToBeSearched) {
           const restOfChars = pokemonsToSearch.substring(allPokemonsHashCharsDepth, pokemonsToSearch.length);
-          pokemonsNamesToBeSearched = pokemonsNamesToBeSearched.filter(pokemonName => {
+          namesOfPokemonsToBeSearched = namesOfPokemonsToBeSearched.filter(pokemonName => {
             const restOfPokemonName = pokemonName.substring(
               allPokemonsHashCharsDepth,
               allPokemonsHashCharsDepth + restOfChars.length
             );
             return restOfPokemonName === restOfChars;
           });
-          if (pokemonsNamesToBeSearched.length) {
-            setPokemonsToBeSearched(pokemonsNamesToBeSearched);
-          } else {
-            setPokemonsToBeSearched([]);
+          if (namesOfPokemonsToBeSearched.length) {
+            setPokemonsToBeSearched(namesOfPokemonsToBeSearched);
+            return;
           }
-        } else {
-          setPokemonsToBeSearched([]);
         }
+        setPokemonsToBeSearched([]);
       } else if (!pokemonsToSearch.length) {
         setPokemonsToBeSearched([]);
       }
     },
-    [setPokemonsToBeSearched]
+    [setPokemonsToBeSearched, getPokemonsFailure]
   );
 
   return <SearchBar handleOnChange={handleOnChange} />;

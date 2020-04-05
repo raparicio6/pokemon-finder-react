@@ -11,9 +11,10 @@ import PokemonList from './layout';
  * List of all displayed Pokemons
  */
 function PokemonListContainer() {
-  const pokemonsNamesToBeSearched = useSelector(state => state.pokemons.pokemonsNamesToBeSearched);
+  const namesOfPokemonsToBeSearched = useSelector(state => state.pokemons.namesOfPokemonsToBeSearched);
   const pokemons = useSelector(state => state.pokemons.pokemons);
   const pokemonsLoading = useSelector(state => state.pokemons.pokemonsLoading);
+  const errorMessage = useSelector(state => state.pokemons.errorMessage);
   const dispatch = useDispatch();
   const getPokemons = useCallback(
     pokemonsNames => dispatch(pokemonsActionsCreators.getPokemons(pokemonsNames)),
@@ -27,7 +28,6 @@ function PokemonListContainer() {
         try {
           allPokemons = await getAllPokemonsNames();
         } catch {
-          // TODO: show error message
           return;
         }
 
@@ -38,10 +38,10 @@ function PokemonListContainer() {
   }, []);
 
   useEffect(() => {
-    getPokemons(pokemonsNamesToBeSearched);
-  }, [getPokemons, pokemonsNamesToBeSearched]);
+    getPokemons(namesOfPokemonsToBeSearched);
+  }, [getPokemons, namesOfPokemonsToBeSearched]);
 
-  return <PokemonList pokemons={pokemons} pokemonsLoading={pokemonsLoading} />;
+  return <PokemonList pokemons={pokemons} pokemonsLoading={pokemonsLoading} errorMessage={errorMessage} />;
 }
 
 export default PokemonListContainer;
