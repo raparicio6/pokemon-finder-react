@@ -11,7 +11,7 @@ import styles from './styles.module.scss';
 function Home() {
   return (
     <>
-      <div className={styles.languageButtons}>
+      <div className={`background-wild-sand ${styles.languageButtons}`}>
         <LanguageButtons />
       </div>
       <div className={`column center background-wild-sand all-screen-height ${styles.container}`}>

@@ -1,9 +1,7 @@
 import React, { useEffect, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { getAllPokemonsNames } from '../../../services/PokemonService';
 import { actionCreators as pokemonsActionsCreators } from '../../../redux/pokemons/actions';
-import LocalStorageService from '../../../services/LocalStorageService';
 
 import PokemonList from './layout';
 
@@ -20,22 +18,6 @@ function PokemonListContainer() {
     pokemonsNames => dispatch(pokemonsActionsCreators.getPokemons(pokemonsNames)),
     [dispatch]
   );
-
-  useEffect(() => {
-    const setAllPokemonsNamesInStorage = async () => {
-      if (!LocalStorageService.getAllPokemonsHash()) {
-        let allPokemons = null;
-        try {
-          allPokemons = await getAllPokemonsNames();
-        } catch {
-          return;
-        }
-
-        LocalStorageService.setAllPokemonsHash(allPokemons);
-      }
-    };
-    setAllPokemonsNamesInStorage();
-  }, []);
 
   useEffect(() => {
     getPokemons(namesOfPokemonsToBeSearched);
