@@ -6,7 +6,7 @@ const getValue = key => {
 
   try {
     encodedValue = window.localStorage.getItem(encodedKey);
-  } catch (e) {
+  } catch {
     encodedValue = tempStorage[encodedKey];
   }
   const stringValue = encodedValue && window.atob(encodedValue);
@@ -21,7 +21,7 @@ const setValue = (key, value) => {
 
   try {
     window.localStorage.setItem(encodedKey, encodedValue);
-  } catch (e) {
+  } catch {
     tempStorage[encodedKey] = encodedValue;
   }
 };
@@ -31,7 +31,7 @@ const removeValue = key => {
 
   try {
     window.localStorage.removeItem(encodedKey);
-  } catch (e) {
+  } catch {
     tempStorage[encodedKey] = undefined;
   }
 };
