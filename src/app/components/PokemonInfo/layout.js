@@ -3,6 +3,7 @@ import { string, number } from 'prop-types';
 import { t } from 'i18next';
 
 import { DEFAULT_POKEMON_IMAGE_URL } from '../../constants';
+import { capitalizeFirstLetter } from '../../../utils/capitalizeFirstLetter';
 
 import styles from './styles.module.scss';
 
@@ -14,7 +15,7 @@ function PokemonInfo({ name, baseExperience, weight, height, imageUrl }) {
         alt={t('PokemonInfo:imageAlt')}
         className={styles.pokemonAppearanceImage}
       />
-      <h2 className={`${styles.name} m-top-2`}>{name}</h2>
+      <h2 className={`${styles.name} m-top-2`}>{capitalizeFirstLetter(name)}</h2>
       <span className={`${styles.field} m-top-2`}>
         {`${t('PokemonInfo:baseExperience')}: ${baseExperience}`}
       </span>
