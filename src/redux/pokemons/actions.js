@@ -44,14 +44,17 @@ export const actionCreators = {
     type: actions.GET_POKEMONS_LOADING
   }),
   getPokemonsSuccess: (searchedPokemons, pokemonsNames, alreadySearchedPokemonsObject) => {
-    const namesOfPokemonsNotToBeSearched = pokemonsNames.filter(
+    const namesOfPreviouslySearchedPokemons = pokemonsNames.filter(
       pokemonName => pokemonName in alreadySearchedPokemonsObject
     );
-    const pokemonsNotToBeSearched = namesOfPokemonsNotToBeSearched.map(
+    const previouslySearchedPokemons = namesOfPreviouslySearchedPokemons.map(
       pokemonName => alreadySearchedPokemonsObject[pokemonName]
     );
 
-    return { type: actions.GET_POKEMONS_SUCCESS, payload: [...searchedPokemons, ...pokemonsNotToBeSearched] };
+    return {
+      type: actions.GET_POKEMONS_SUCCESS,
+      payload: [...searchedPokemons, ...previouslySearchedPokemons]
+    };
   },
   getPokemonsFailure: errorMessage => ({
     type: actions.GET_POKEMONS_FAILURE,

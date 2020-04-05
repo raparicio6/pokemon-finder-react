@@ -32,6 +32,7 @@ module.exports = {
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
     "no-nested-ternary": 'off',
-    "valid-jsdoc": 'off'
+    "valid-jsdoc": 'off',
+    "id-length": ['error', { max: 35 , min: 1 }]
   }
 };
