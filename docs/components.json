@@ -1,9 +1,18 @@
 [
   {
-    "description": "Information about the project",
-    "displayName": "Footer",
+    "description": "",
+    "displayName": "ErrorMessage",
     "methods": [],
-    "filename": "/app/components/Footer/index.js"
+    "props": {
+      "text": {
+        "type": {
+          "name": "string"
+        },
+        "required": true,
+        "description": ""
+      }
+    },
+    "filename": "/app/components/ErrorMessage/index.js"
   },
   {
     "description": "Buttons to change the language of the site",
@@ -16,7 +25,7 @@
     "displayName": "LanguageButtons",
     "methods": [],
     "props": {
-      "onHandleLanguageChangeClick": {
+      "onHandleClick": {
         "type": {
           "name": "func"
         },
@@ -25,6 +34,12 @@
       }
     },
     "filename": "/app/components/LanguageButtons/layout.js"
+  },
+  {
+    "description": "",
+    "displayName": "AppRoutes",
+    "methods": [],
+    "filename": "/app/components/Routes/index.js"
   },
   {
     "description": "List of all displayed Pokemons",
@@ -49,6 +64,13 @@
           "name": "bool"
         },
         "required": true,
+        "description": ""
+      },
+      "errorMessage": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
         "description": ""
       }
     },
@@ -160,10 +182,10 @@
     "filename": "/app/components/PokemonInfo/layout.js"
   },
   {
-    "description": "",
-    "displayName": "AppRoutes",
+    "description": "Information about the project",
+    "displayName": "Footer",
     "methods": [],
-    "filename": "/app/components/Routes/index.js"
+    "filename": "/app/components/Footer/index.js"
   },
   {
     "description": "Search bar to search for the desired pokemons",
