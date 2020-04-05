@@ -15,6 +15,12 @@
     "filename": "/app/components/ErrorMessage/index.js"
   },
   {
+    "description": "Information about the project",
+    "displayName": "Footer",
+    "methods": [],
+    "filename": "/app/components/Footer/index.js"
+  },
+  {
     "description": "Buttons to change the language of the site",
     "displayName": "LanguageButtonsContainer",
     "methods": [],
@@ -25,7 +31,7 @@
     "displayName": "LanguageButtons",
     "methods": [],
     "props": {
-      "onHandleClick": {
+      "handleOnClick": {
         "type": {
           "name": "func"
         },
@@ -34,47 +40,6 @@
       }
     },
     "filename": "/app/components/LanguageButtons/layout.js"
-  },
-  {
-    "description": "",
-    "displayName": "AppRoutes",
-    "methods": [],
-    "filename": "/app/components/Routes/index.js"
-  },
-  {
-    "description": "List of all displayed Pokemons",
-    "displayName": "PokemonListContainer",
-    "methods": [],
-    "filename": "/app/components/PokemonList/index.js"
-  },
-  {
-    "description": "",
-    "displayName": "PokemonList",
-    "methods": [],
-    "props": {
-      "pokemons": {
-        "type": {
-          "name": "array"
-        },
-        "required": true,
-        "description": ""
-      },
-      "pokemonsLoading": {
-        "type": {
-          "name": "bool"
-        },
-        "required": true,
-        "description": ""
-      },
-      "errorMessage": {
-        "type": {
-          "name": "string"
-        },
-        "required": false,
-        "description": ""
-      }
-    },
-    "filename": "/app/components/PokemonList/layout.js"
   },
   {
     "description": "All the pokemon information",
@@ -182,10 +147,51 @@
     "filename": "/app/components/PokemonInfo/layout.js"
   },
   {
-    "description": "Information about the project",
-    "displayName": "Footer",
+    "description": "List of all displayed Pokemons",
+    "displayName": "PokemonListContainer",
     "methods": [],
-    "filename": "/app/components/Footer/index.js"
+    "filename": "/app/components/PokemonList/index.js"
+  },
+  {
+    "description": "",
+    "displayName": "PokemonList",
+    "methods": [],
+    "props": {
+      "pokemons": {
+        "type": {
+          "name": "array"
+        },
+        "required": true,
+        "description": ""
+      },
+      "pokemonsLoading": {
+        "type": {
+          "name": "bool"
+        },
+        "required": true,
+        "description": ""
+      },
+      "errorMessage": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      }
+    },
+    "filename": "/app/components/PokemonList/layout.js"
+  },
+  {
+    "description": "",
+    "displayName": "AppRoutes",
+    "methods": [],
+    "filename": "/app/components/Routes/index.js"
+  },
+  {
+    "description": "Animation to use while loading information",
+    "displayName": "Spinner",
+    "methods": [],
+    "filename": "/app/components/Spinner/index.js"
   },
   {
     "description": "Search bar to search for the desired pokemons",
@@ -207,11 +213,5 @@
       }
     },
     "filename": "/app/components/SearchBar/layout.js"
-  },
-  {
-    "description": "Animation to use while loading information",
-    "displayName": "Spinner",
-    "methods": [],
-    "filename": "/app/components/Spinner/index.js"
   }
 ]

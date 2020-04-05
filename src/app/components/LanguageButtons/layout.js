@@ -5,13 +5,13 @@ import { LANGUAGES, ES, EN } from '../../constants';
 
 import styles from './styles.module.scss';
 
-function LanguageButtons({ onHandleClick }) {
+function LanguageButtons({ handleOnClick }) {
   return (
     <div className={`row ${styles.container}`}>
-      <button type="button" className={styles.esButton} data-lang={LANGUAGES.ES} onClick={onHandleClick}>
+      <button type="button" className={styles.esButton} data-lang={LANGUAGES.ES} onClick={handleOnClick}>
         {ES}
       </button>
-      <button type="button" className={styles.enButton} data-lang={LANGUAGES.EN} onClick={onHandleClick}>
+      <button type="button" className={styles.enButton} data-lang={LANGUAGES.EN} onClick={handleOnClick}>
         {EN}
       </button>
     </div>
@@ -19,7 +19,7 @@ function LanguageButtons({ onHandleClick }) {
 }
 
 LanguageButtons.propTypes = {
-  onHandleClick: func.isRequired
+  handleOnClick: func.isRequired
 };
 
 export default LanguageButtons;

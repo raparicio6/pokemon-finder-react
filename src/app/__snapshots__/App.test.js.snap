@@ -124,7 +124,7 @@ exports[`App matches the snapshot 1`] = `
                     >
                       <LanguageButtonsContainer>
                         <LanguageButtons
-                          onHandleLanguageChangeClick={[Function]}
+                          handleOnClick={[Function]}
                         >
                           <div
                             className="row container"
@@ -172,6 +172,7 @@ exports[`App matches the snapshot 1`] = `
                       </SearchBarContainer>
                       <PokemonListContainer>
                         <PokemonList
+                          errorMessage={null}
                           pokemons={Array []}
                           pokemonsLoading={false}
                         >
