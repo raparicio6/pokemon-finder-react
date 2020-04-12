@@ -29,10 +29,10 @@ module.exports = {
     'no-empty-function': 'off',
     'no-unused-vars': 'off',
     'no-use-before-define': 'off',
-    "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn",
-    "no-nested-ternary": 'off',
-    "valid-jsdoc": 'off',
-    "id-length": ['error', { max: 35 , min: 1 }]
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'warn',
+    'no-nested-ternary': 'off',
+    'valid-jsdoc': 'off',
+    'id-length': ['error', { max: 35 , min: 1 }]
   }
 };
