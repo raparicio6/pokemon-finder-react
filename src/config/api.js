@@ -1,6 +1,6 @@
 import { create } from 'apisauce';
 
-const baseURL = process.env.REACT_APP_USER_BASE_URL;
+const baseURL = process.env.REACT_APP_POKEMON_BASE_URL;
 
 const api = create({
   baseURL,
