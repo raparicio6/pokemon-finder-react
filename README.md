@@ -5,7 +5,7 @@
 &nbsp;
 **Be a pokemon master!**
 
-<img alt="Pokeball" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Pokebola-pokeball-png-0.png/601px-Pokebola-pokeball-png-0.png" height="200" width="200">
+<img alt="App" src="./app-image.png">
 
 &nbsp;
 ## Getting Started
