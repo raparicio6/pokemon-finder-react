@@ -29,10 +29,12 @@ To start the app by default (development) run:
 To start a specific environment, run:  
 `npm run start-env environment`
 
-#### Only building
+### Only building
 
 To only build the application in a specific env, run:  
 `npm run build environment`
+
+## Development
 
 ### Testing
 
