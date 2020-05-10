@@ -18,9 +18,7 @@ Nvm approach is preferred.
 Install dependencies by running `npm i`.
 
 Create a *.env.correspondingEnv* (e.g. .env.development) file at the root of the project and add:  
-```
-REACT_APP_POKEMON_BASE_URL=api_back_url
-```  
+```REACT_APP_POKEMON_BASE_URL=api_back_url```  
 By default [Backend](https://github.com/raparicio6/pokemon-finder-node) uses *http://localhost:8080* as the base url.
 
 To start the app by default (development) run:  
